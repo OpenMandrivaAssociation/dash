@@ -1,6 +1,6 @@
 Summary: The Debian Almquist Shell (formerly NetBSD's ash)
 Name: dash
-Version: 0.5.3
+Version: 0.5.4
 Release: %mkrel 1
 URL: http://ftp.debian.org/debian/pool/main/d/dash
 License: BSD
@@ -15,7 +15,7 @@ BuildRequires: bison, dietlibc-devel
 "dash" is a POSIX  compliant shell  that is  much smaller  than "bash".
 Dash supports many features that a real sh shell would support, however
 it much smaller in size. This becomes an advantage in situations  where
-there is a  lack of  memery (initial  ram-disks, etc). dash does lack a 
+there is a  lack of  memery (initial  ram-disks, etc). dash does lack a
 few features, like command line history.
 
 dash is the continuation of the original NetBSD ash fork.  dash is much
