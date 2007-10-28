@@ -5,7 +5,7 @@ Release: %mkrel 1
 URL: http://ftp.debian.org/debian/pool/main/d/dash
 License: BSD
 Group: Shells
-Source: dash_%{version}.orig.tar.bz2
+Source: dash_%{version}.orig.tar.gz
 Requires(post): rpm-helper
 Requires(postun): rpm-helper
 BuildRoot: %{_tmppath}/%name-%version
@@ -51,7 +51,7 @@ This version is statically compiled
 
 %build
 
-%configure
+%configure2_5x
 
 # Build dynamically linked dash first
 make
@@ -60,12 +60,10 @@ mv src/dash src/dash.dynamic
 
 # Build statically linked dietlibc dash last
 make clean
-%configure CC="diet gcc"
+%configure2_5x CC="diet gcc"
 make CC="diet gcc"
 strip src/dash
 mv src/dash src/dash.static
-
-
 
 %install
 rm -rf $RPM_BUILD_ROOT
