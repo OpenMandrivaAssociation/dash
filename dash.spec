@@ -8,7 +8,6 @@ Group: Shells
 Source: dash_%{version}.orig.tar.gz
 Requires(post): rpm-helper
 Requires(postun): rpm-helper
-BuildRoot: %{_tmppath}/%name-%version
 BuildRequires: bison, dietlibc-devel
 
 %description
