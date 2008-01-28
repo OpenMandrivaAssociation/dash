@@ -80,7 +80,7 @@ install -m 644 src/dash.1 %{buildroot}%{_mandir}/man1/dash.1
 install -m 755 src/dash.static %{buildroot}/bin/dash.static
 
 ln -s /bin/dash %{buildroot}/bin/ash
-ln -s %{_mandir}/man1/ash.1 %{buildroot}%{_mandir}/man1/dash.1
+ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/dash
