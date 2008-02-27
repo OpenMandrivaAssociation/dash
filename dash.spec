@@ -29,8 +29,6 @@ that is similar to GNU's bash.
 Summary:	The Debian Almquist Shell (statically compiled)
 License:	BSD
 Group:		Shells
-Requires(post):		rpm-helper
-Requires(postun):	rpm-helper
 Obsoletes:	ash
 Provides:	ash
 
