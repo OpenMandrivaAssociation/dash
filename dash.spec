@@ -1,7 +1,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
@@ -11,8 +11,6 @@ Requires(postun):	rpm-helper
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 BuildRequires:	bison
 BuildRequires:	dietlibc-devel
-Obsoletes:	ash
-Provides:	ash
 
 %description
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -33,6 +31,8 @@ License:	BSD
 Group:		Shells
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
+Obsoletes:	ash
+Provides:	ash
 
 %description static
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -79,22 +79,22 @@ install -m 644 src/dash.1 %{buildroot}%{_mandir}/man1/dash.1
 
 install -m 755 src/dash.static %{buildroot}/bin/dash.static
 
-ln -s /bin/dash %{buildroot}/bin/ash
+ln -s /bin/dash.static %{buildroot}/bin/ash
 ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/dash
-/usr/share/rpm-helper/add-shell ash $1 /bin/ash
 
 %post static
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/dash.static
+/usr/share/rpm-helper/add-shell ash $1 /bin/ash
 
 %postun
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
-/usr/share/rpm-helper/del-shell ash $1 /bin/ash
 
 %postun static
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash.static
+/usr/share/rpm-helper/del-shell ash $1 /bin/ash
 
 %clean
 rm -rf %{buildroot}
@@ -103,10 +103,10 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc ChangeLog COPYING
 /bin/dash
-/bin/ash
 %{_mandir}/man1/*
 
 %files static
 %doc ChangeLog COPYING
 %defattr(-,root,root)
 /bin/dash.static
+/bin/ash
