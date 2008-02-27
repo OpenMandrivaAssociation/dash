@@ -1,7 +1,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.4
-Release:	%mkrel 3
+Release:	%mkrel 4
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
@@ -85,16 +85,8 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/dash
 
-%post static
-/usr/share/rpm-helper/add-shell %{name} $1 /bin/dash.static
-/usr/share/rpm-helper/add-shell ash $1 /bin/ash
-
 %postun
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
-
-%postun static
-/usr/share/rpm-helper/del-shell %{name} $1 /bin/dash.static
-/usr/share/rpm-helper/del-shell ash $1 /bin/ash
 
 %clean
 rm -rf %{buildroot}
