@@ -1,7 +1,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.4
-Release:	%mkrel 5
+Release:	%mkrel 6
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
@@ -31,6 +31,8 @@ License:	BSD
 Group:		Shells
 Obsoletes:	ash
 Provides:	ash
+# explicit file provide:
+Provides:	/bin/dash.static
 
 %description static
 "dash" is a POSIX compliant shell that is much smaller than "bash".
