@@ -1,7 +1,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.4
-Release:	%mkrel 8
+Release:	%mkrel 9
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
