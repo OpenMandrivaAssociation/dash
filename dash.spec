@@ -1,13 +1,15 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.4
-Release:	%mkrel 9
+Release:	%mkrel 10
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
 Source:		%{name}_%{version}.orig.tar.gz
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
+# explicit file provide:
+Provides:	/bin/dash
 BuildRequires:	bison
 BuildRequires:	dietlibc-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
