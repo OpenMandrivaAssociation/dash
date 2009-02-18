@@ -1,11 +1,13 @@
+%define Werror_cflags %nil
+
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.4
-Release:	%mkrel 10
+Version:	0.5.5.1
+Release:	%mkrel 1
 URL:		http://ftp.debian.org/debian/pool/main/d/dash
 License:	BSD
 Group:		Shells
-Source:		%{name}_%{version}.orig.tar.gz
+Source:		%{name}-%{version}.tar.gz
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
