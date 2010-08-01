@@ -2,12 +2,12 @@
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.5.1
-Release:	%mkrel 3
-URL:		http://ftp.debian.org/debian/pool/main/d/dash
+Version:	0.5.6.1
+Release:	%mkrel 1
 License:	BSD
 Group:		Shells
-Source:		%{name}-%{version}.tar.gz
+URL:		http://gondor.apana.org.au/~herbert/dash/
+Source:		http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
@@ -58,18 +58,20 @@ This version is statically compiled.
 %setup -q
 
 %build
+export CFLAGS="%{optflags} -Os"
+export CXXFLAGS=$CFLAGS
 
 %configure2_5x
 
 # Build dynamically linked dash first
-make
+%make
 strip src/dash
 mv src/dash src/dash.dynamic
 
 # Build statically linked dietlibc dash last
 make clean
 %configure2_5x CC="diet gcc"
-make CC="diet gcc"
+%make CC="diet gcc"
 strip src/dash
 mv src/dash src/dash.static
 
