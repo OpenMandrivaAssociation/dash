@@ -1,5 +1,3 @@
-%define Werror_cflags %nil
-
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.6.1
@@ -7,7 +5,8 @@ Release:	%mkrel 1
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
-Source:		http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
+Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
+Patch0:		dash-0.5.6.1-format-not-a-string-literal-and-no-format-arguments.patch
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
@@ -56,6 +55,7 @@ This version is statically compiled.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Os"
