@@ -1,12 +1,12 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.6.1
-Release:	%mkrel 2
+Version:	0.5.7
+Release:	%mkrel 1
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
 Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
-Patch0:		dash-0.5.6.1-format-not-a-string-literal-and-no-format-arguments.patch
+Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
 Requires(post):		rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
