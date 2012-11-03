@@ -1,7 +1,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.7
-Release:	%mkrel 1
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
@@ -13,7 +13,6 @@ Requires(postun):	rpm-helper
 Provides:	/bin/dash
 BuildRequires:	bison
 BuildRequires:	dietlibc-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -76,8 +75,6 @@ strip src/dash
 mv src/dash src/dash.static
 
 %install
-rm -rf %{buildroot}
-
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}/%{_mandir}/man1
 
@@ -95,17 +92,12 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 %postun
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc ChangeLog COPYING
 /bin/dash
 %{_mandir}/man1/*
 
 %files static
 %doc ChangeLog COPYING
-%defattr(-,root,root)
 /bin/dash.static
 /bin/ash
