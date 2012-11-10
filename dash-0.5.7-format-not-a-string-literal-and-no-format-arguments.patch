@@ -1,0 +1,12 @@
+diff -Naur dash-0.5.7/src/jobs.c dash-0.5.7.tpg//src/jobs.c
+--- dash-0.5.7/src/jobs.c	2011-03-15 07:45:32.000000000 +0000
++++ dash-0.5.7.tpg//src/jobs.c	2011-08-20 19:53:41.000000000 +0000
+@@ -427,7 +427,7 @@
+ 				goto out;
+ #endif
+ 		}
+-		col = fmtstr(s, 32, strsignal(st));
++		col = fmtstr(s, 32, strsignal(st),"%s");
+ #ifdef WCOREDUMP
+ 		if (WCOREDUMP(status)) {
+ 			col += fmtstr(s + col, 16, " (core dumped)");
