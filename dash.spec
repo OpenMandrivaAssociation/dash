@@ -1,19 +1,18 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.7
-Release:	%mkrel 1
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
 Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
 Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
-Requires(post):		rpm-helper
+Requires(post):	rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
-Provides:	/bin/dash
+Provides:		/bin/dash
 BuildRequires:	bison
 BuildRequires:	dietlibc-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -32,7 +31,7 @@ that is similar to GNU's bash.
 Summary:	The Debian Almquist Shell (statically compiled)
 License:	BSD
 Group:		Shells
-Obsoletes:	ash
+Obsoletes:	ash < %{version}
 Provides:	ash
 Conflicts:	dash < 0.5.4-3
 # explicit file provide:
@@ -76,7 +75,6 @@ strip src/dash
 mv src/dash src/dash.static
 
 %install
-rm -rf %{buildroot}
 
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}/%{_mandir}/man1
@@ -95,11 +93,7 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 %postun
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc ChangeLog COPYING
 /bin/dash
 %{_mandir}/man1/*
