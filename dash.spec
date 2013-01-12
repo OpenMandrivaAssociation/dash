@@ -1,3 +1,7 @@
+# Currently debug is empty so rpmlint rejects build
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.7
