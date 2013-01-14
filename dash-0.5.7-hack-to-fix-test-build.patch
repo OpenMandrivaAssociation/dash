@@ -1,0 +1,16 @@
+--- dash-0.5.7/src/bltin/test.c.orig	2011-03-15 09:18:06.000000000 +0200
++++ dash-0.5.7/src/bltin/test.c	2012-09-29 20:05:07.000000000 +0300
+@@ -19,6 +19,12 @@
+ #include <stdarg.h>
+ #include "bltin.h"
+ 
++/* (tmb) hack until dietlibc provides theese */
++/* Special value used to indicate the *at functions should use the current working directory. */
++#define AT_FDCWD	-100
++/* Test access permitted for effective IDs, not real IDs. */
++#define AT_EACCESS	0x200
++
+ /* test(1) accepts the following grammar:
+ 	oexpr	::= aexpr | aexpr "-o" oexpr ;
+ 	aexpr	::= nexpr | nexpr "-a" aexpr ;
+

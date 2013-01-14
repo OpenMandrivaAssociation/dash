@@ -5,12 +5,13 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.7
-Release:	2
+Release:	3
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
 Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
 Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
+Patch1:		dash-0.5.7-hack-to-fix-test-build.patch
 Requires(post):	rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
@@ -59,6 +60,7 @@ This version is statically compiled.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -Os"
@@ -104,7 +106,6 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 
 %files static
 %doc ChangeLog COPYING
-%defattr(-,root,root)
 /bin/dash.static
 /bin/ash
 
