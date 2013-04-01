@@ -1,6 +1,7 @@
 # Currently debug is empty so rpmlint rejects build
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
+%bcond_without	diet
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
@@ -70,15 +71,17 @@ export CXXFLAGS=$CFLAGS
 
 # Build dynamically linked dash first
 %make
-strip src/dash
+%{__strip} src/dash
 mv src/dash src/dash.dynamic
 
+%if %{with diet}
 # Build statically linked dietlibc dash last
 make clean
 %configure2_5x CC="diet gcc"
 %make CC="diet gcc"
-strip src/dash
+%{__strip} src/dash
 mv src/dash src/dash.static
+%endif
 
 %install
 
@@ -88,10 +91,11 @@ mkdir -p %{buildroot}/%{_mandir}/man1
 install -m 755 src/dash.dynamic %{buildroot}/bin/dash
 install -m 644 src/dash.1 %{buildroot}%{_mandir}/man1/dash.1
 
+%if %{with diet}
 install -m 755 src/dash.static %{buildroot}/bin/dash.static
-
 ln -s /bin/dash.static %{buildroot}/bin/ash
 ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
+%endif
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/dash
@@ -104,10 +108,12 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 /bin/dash
 %{_mandir}/man1/*
 
+%if %{with diet}
 %files static
 %doc ChangeLog COPYING
 /bin/dash.static
 /bin/ash
+%endif
 
 
 %changelog
