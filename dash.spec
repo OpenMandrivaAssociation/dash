@@ -1,7 +1,4 @@
-# Currently debug is empty so rpmlint rejects build
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
-%bcond_without	diet
+%bcond_without	musl
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
@@ -18,7 +15,7 @@ Requires(postun):	rpm-helper
 # explicit file provide:
 Provides:		/bin/dash
 BuildRequires:	bison
-BuildRequires:	dietlibc-devel
+BuildRequires:	musl-devel
 
 %description
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -74,11 +71,11 @@ export CXXFLAGS=$CFLAGS
 %{__strip} src/dash
 mv src/dash src/dash.dynamic
 
-%if %{with diet}
+%if %{with musl}
 # Build statically linked dietlibc dash last
 make clean
-%configure2_5x CC="diet gcc"
-%make CC="diet gcc"
+%configure CC="musl-gcc"
+%make CC="musl-gcc"
 %{__strip} src/dash
 mv src/dash src/dash.static
 %endif
