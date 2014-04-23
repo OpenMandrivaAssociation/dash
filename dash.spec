@@ -68,7 +68,6 @@ export CXXFLAGS=$CFLAGS
 
 # Build dynamically linked dash first
 %make
-%{__strip} src/dash
 mv src/dash src/dash.dynamic
 
 %if %{with musl}
@@ -76,7 +75,6 @@ mv src/dash src/dash.dynamic
 make clean
 %configure CC="musl-gcc"
 %make CC="musl-gcc"
-%{__strip} src/dash
 mv src/dash src/dash.static
 %endif
 
