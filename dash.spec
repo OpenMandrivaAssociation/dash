@@ -1,4 +1,8 @@
+%ifnarch %arm aarch64
 %bcond_without	musl
+%else
+%bcond_with	musl
+%endif
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
@@ -64,7 +68,7 @@ This version is statically compiled.
 export CFLAGS="%{optflags} -Os"
 export CXXFLAGS=$CFLAGS
 
-%configure2_5x
+%configure
 
 # Build dynamically linked dash first
 %make
