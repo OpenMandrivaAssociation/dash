@@ -7,7 +7,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.7
-Release:	11
+Release:	12
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
@@ -19,7 +19,9 @@ Requires(postun):	rpm-helper
 # explicit file provide:
 Provides:		/bin/dash
 BuildRequires:	bison
+%if %{with musl}
 BuildRequires:	musl-devel
+%endif
 
 %description
 "dash" is a POSIX compliant shell that is much smaller than "bash".
@@ -33,7 +35,7 @@ more up-to-date, and properly maintained.
 
 You should install dash if you need a near featureful lightweight shell
 that is similar to GNU's bash.
-
+%if %{with musl}
 %package static
 Summary:	The Debian Almquist Shell (statically compiled)
 License:	BSD
@@ -58,6 +60,7 @@ You should install dash if you need a near featureful lightweight shell
 that is similar to GNU's bash.
 
 This version is statically compiled.
+%endif
 
 %prep
 %setup -q
@@ -87,7 +90,7 @@ mkdir -p %{buildroot}/%{_mandir}/man1
 install -m 755 src/dash.dynamic %{buildroot}/bin/dash
 install -m 644 src/dash.1 %{buildroot}%{_mandir}/man1/dash.1
 
-%if %{with diet}
+%if %{with musl}
 install -m 755 src/dash.static %{buildroot}/bin/dash.static
 ln -s /bin/dash.static %{buildroot}/bin/ash
 ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
@@ -104,7 +107,7 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 /bin/dash
 %{_mandir}/man1/*
 
-%if %{with diet}
+%if %{with musl}
 %files static
 %doc ChangeLog COPYING
 /bin/dash.static
