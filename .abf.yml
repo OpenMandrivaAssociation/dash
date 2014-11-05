@@ -1,3 +1,5 @@
+removed_sources:
+  dash-0.5.6.1.tar.gz: 06944456a1e3a2cbc325bffd0c898eff198b210a
+  dash-0.5.7.tar.gz: a3ebc16f2e2c7ae8adf64e5e62ae3dcb631717c6
 sources:
-  "dash-0.5.6.1.tar.gz": 06944456a1e3a2cbc325bffd0c898eff198b210a
-  "dash-0.5.7.tar.gz": a3ebc16f2e2c7ae8adf64e5e62ae3dcb631717c6
+  dash-0.5.8.tar.gz: cd058935bba545427caa375337afe8a6309477d2

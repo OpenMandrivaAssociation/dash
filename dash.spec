@@ -6,8 +6,8 @@
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.7
-Release:	12
+Version:	0.5.8
+Release:	1
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
@@ -17,7 +17,7 @@ Patch1:		dash-0.5.7-hack-to-fix-test-build.patch
 Requires(post):	rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
-Provides:		/bin/dash
+Provides:	/bin/dash
 BuildRequires:	bison
 %if %{with musl}
 BuildRequires:	musl-devel
@@ -35,6 +35,7 @@ more up-to-date, and properly maintained.
 
 You should install dash if you need a near featureful lightweight shell
 that is similar to GNU's bash.
+
 %if %{with musl}
 %package static
 Summary:	The Debian Almquist Shell (statically compiled)
