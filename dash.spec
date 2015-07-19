@@ -7,7 +7,7 @@
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
 Version:	0.5.8
-Release:	2
+Release:	3
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
