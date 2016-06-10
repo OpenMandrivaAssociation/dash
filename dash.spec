@@ -6,8 +6,8 @@
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.8
-Release:	3
+Version:	0.5.9
+Release:	1
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
@@ -42,7 +42,7 @@ Summary:	The Debian Almquist Shell (statically compiled)
 License:	BSD
 Group:		Shells
 Obsoletes:	ash < %{version}
-Provides:	ash
+Provides:	ash = %{version}
 Conflicts:	dash < 0.5.4-3
 # explicit file provide:
 Provides:	/bin/dash.static
@@ -76,7 +76,7 @@ This version is statically compiled.
 mv src/dash src/dash.dynamic
 
 %if %{with musl}
-# Build statically linked dietlibc dash last
+# Build statically linked musl dash
 make clean
 %configure CC="musl-gcc"
 %make CC="musl-gcc"
