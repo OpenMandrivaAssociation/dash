@@ -6,7 +6,7 @@
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.9
+Version:	0.5.9.1
 Release:	1
 License:	BSD
 Group:		Shells
@@ -104,13 +104,11 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
 
 %files
-%doc ChangeLog COPYING
 /bin/dash
 %{_mandir}/man1/*
 
 %if %{with musl}
 %files static
-%doc ChangeLog COPYING
 /bin/dash.static
 /bin/ash
 %endif
