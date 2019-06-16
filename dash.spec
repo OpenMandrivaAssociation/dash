@@ -1,4 +1,4 @@
-%ifnarch %arm aarch64
+%ifnarch %{armx} %{riscv}
 %bcond_without	musl
 %else
 %bcond_with	musl
