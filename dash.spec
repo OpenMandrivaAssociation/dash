@@ -3,6 +3,7 @@
 %else
 %bcond_with	musl
 %endif
+%define _disable_rebuild_configure 1
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
