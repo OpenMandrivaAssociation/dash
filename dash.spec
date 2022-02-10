@@ -1,6 +1,6 @@
 %ifnarch %{armx} %{riscv}
-%bcond_without	musl
-%else
+#%bcond_without	musl
+#%else
 %bcond_with	musl
 %endif
 %define _disable_rebuild_configure 1
