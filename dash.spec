@@ -1,14 +1,14 @@
 %ifnarch %{armx} %{riscv}
 #%bcond_without	musl
 #%else
-%bcond_with	musl
+%bcond_with musl
 %endif
 %define _disable_rebuild_configure 1
 
 Summary:	The Debian Almquist Shell (formerly NetBSD's ash)
 Name:		dash
-Version:	0.5.10.2
-Release:	2
+Version:	0.5.12
+Release:	1
 License:	BSD
 Group:		Shells
 URL:		http://gondor.apana.org.au/~herbert/dash/
@@ -65,22 +65,20 @@ This version is statically compiled.
 %endif
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure
 
 # Build dynamically linked dash first
-%make
+%make_build
 mv src/dash src/dash.dynamic
 
 %if %{with musl}
 # Build statically linked musl dash
 make clean
 %configure CC="musl-gcc"
-%make CC="musl-gcc"
+%make_build CC="musl-gcc"
 mv src/dash src/dash.static
 %endif
 
@@ -106,7 +104,7 @@ ln -s %{_mandir}/man1/dash.1 %{buildroot}%{_mandir}/man1/ash.1
 
 %files
 /bin/dash
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
 
 %if %{with musl}
 %files static
