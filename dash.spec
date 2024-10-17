@@ -11,7 +11,7 @@ Version:	0.5.12
 Release:	2
 License:	BSD
 Group:		Shells
-URL:		http://gondor.apana.org.au/~herbert/dash/
+URL:		https://gondor.apana.org.au/~herbert/dash/
 Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
 Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
 Patch1:		dash-0.5.7-hack-to-fix-test-build.patch
