@@ -54,5 +54,5 @@ install -m 644 src/dash.1 %{buildroot}%{_mandir}/man1/dash.1
 /usr/share/rpm-helper/del-shell %{name} $1 /bin/dash
 
 %files
-%{_bindir}/dash
+/bin/dash
 %doc %{_mandir}/man1/*
