@@ -13,8 +13,8 @@ License:	BSD
 Group:		Shells
 URL:		https://gondor.apana.org.au/~herbert/dash/
 Source0:	http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
-Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
-Patch1:		dash-0.5.7-hack-to-fix-test-build.patch
+#Patch0:		dash-0.5.7-format-not-a-string-literal-and-no-format-arguments.patch
+#Patch1:		dash-0.5.7-hack-to-fix-test-build.patch
 Requires(post):	rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
