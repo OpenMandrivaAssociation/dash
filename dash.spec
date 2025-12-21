@@ -14,6 +14,11 @@ Requires(post):	rpm-helper
 Requires(postun):	rpm-helper
 # explicit file provide:
 Provides:	/bin/dash
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 
 %description
